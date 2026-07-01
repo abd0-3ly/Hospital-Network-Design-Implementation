@@ -1,0 +1,165 @@
+المرحلة الرابعة: Basic Configuration
+على كل Router وSwitch
+hostname
+
+no ip domain-lookup
+
+enable secret
+
+service password-encryption
+
+banner motd
+
+console password
+
+vty password
+________________________________________
+المرحلة الخامسة: إعداد الـ Layer 2
+على جميع الـ Switches.
+1- إنشاء VLANs
+2- تسمية VLANs
+3- Access Ports
+4- Trunk Ports
+5- EtherChannel (لو موجود)
+________________________________________
+المرحلة السادسة: إعداد الـ Multilayer Switch
+على الـ MLS.
+•	ip routing 
+•	SVI لكل VLAN 
+•	Layer 3 Interfaces ناحية الـ Router (لو المنافذ Layer 3) 
+________________________________________
+المرحلة السابعة: DHCP
+حسب الـ Document
+DHCP Server موجود في Server Room.
+إذن:
+•	Configure DHCP Server 
+•	إنشاء Pool لكل VLAN 
+•	إضافة Default Gateway 
+•	DNS 
+•	Excluded Addresses 
+بعدها
+على الـ MLS
+ip helper-address
+لكل VLAN.
+________________________________________
+المرحلة الثامنة: الأجهزة
+الـ PCs
+الـ Laptops
+الـ Printers
+الـ Smartphones
+كلهم
+DHCP
+أما
+Server
+يبقى
+Static IP.
+________________________________________
+المرحلة التاسعة: Wireless
+لكل Department
+•	AP 
+•	SSID 
+•	Password 
+•	توصيله بالـ VLAN الخاصة بالقسم 
+________________________________________
+المرحلة العاشرة: Routing
+الـ Document طالب
+OSPF
+إذن
+شغل OSPF على
+•	Routers 
+•	Multilayer Switches 
+وتأكد إن كل الـ Neighbors وصلوا لحالة FULL.
+________________________________________
+المرحلة الحادية عشرة: Default Route
+اعمل
+Default Static Route
+على
+•	Routers 
+•	Multilayer Switches 
+واستخدم
+Next-Hop IP
+كما هو مطلوب في الـ Document.
+________________________________________
+المرحلة الثانية عشرة: SSH
+على
+•	Routers 
+•	Multilayer Switches 
+اعمل
+•	Username 
+•	Domain Name 
+•	RSA Keys 
+•	VTY 
+•	SSH Version 2 
+________________________________________
+المرحلة الثالثة عشرة: Port Security
+المطلوب
+Server Site Department Switch
+فقط.
+اعمل
+•	Maximum 1 
+•	Sticky 
+•	Shutdown 
+________________________________________
+المرحلة الرابعة عشرة: PAT
+اعمل
+PAT
+على الـ Routers.
+•	Inside Interfaces 
+•	Outside Interface 
+•	ACL 
+•	Overload 
+________________________________________
+المرحلة الخامسة عشرة: VPN
+اعمل
+Site-to-Site IPSec VPN
+بين
+HQ
+و
+Branch
+ويشمل:
+•	ISAKMP Policy 
+•	Pre-shared Key 
+•	Transform Set 
+•	ACL (Interesting Traffic) 
+•	Crypto Map 
+•	تطبيق الـ Crypto Map على واجهة الـ WAN 
+________________________________________
+المرحلة السادسة عشرة: ACL
+اعمل
+Extended ACL
+لحماية الترافيك وتحديد الـ Interesting Traffic الخاص بالـ VPN، ويمكن إضافة قواعد أخرى حسب متطلبات المشروع.
+________________________________________
+المرحلة السابعة عشرة: الاختبارات
+اختبر بالترتيب:
+1.	✅ كل الأجهزة أخذت IP من DHCP. 
+2.	✅ الأجهزة داخل نفس الـ VLAN تتواصل. 
+3.	✅ Inter-VLAN Routing يعمل. 
+4.	✅ جميع الـ VLANs ترى بعضها. 
+5.	✅ HQ يرى Branch. 
+6.	✅ OSPF Neighbor = FULL. 
+7.	✅ Routing Table تحتوي على جميع الشبكات. 
+8.	✅ SSH يعمل. 
+9.	✅ Port Security يعمل. 
+10.	✅ PAT يعمل (الوصول للإنترنت). 
+11.	✅ VPN Tunnel يعمل ويتم تشفير الاتصال. 
+12.	✅ Ping وTraceroute ينجحان بين HQ وBranch. 
+________________________________________
+الترتيب النهائي المختصر
+1.	تصميم الـ Topology. 
+2.	Subnetting وIP Plan. 
+3.	توصيل الأجهزة. 
+4.	Basic Configuration. 
+5.	VLANs. 
+6.	Trunks. 
+7.	EtherChannel (إذا كان موجودًا). 
+8.	Inter-VLAN Routing على الـ MLS. 
+9.	DHCP + ip helper-address. 
+10.	إعداد الأجهزة النهائية (PCs, Printers, APs). 
+11.	OSPF. 
+12.	Default Routes. 
+13.	SSH. 
+14.	Port Security. 
+15.	PAT. 
+16.	IPSec VPN + ACL. 
+17.	الاختبارات النهائية.
+
